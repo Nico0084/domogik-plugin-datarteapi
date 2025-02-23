@@ -1,0 +1,6 @@
+===================
+Develop new service
+===================
+
+Use class BaseDataRteApi heritance from **lib/datarteapi.py** to develop new data RTE service.
+Add your affectation device in DataRteApiManager._loadDMGDevices function of **bin/datarteapi.py** file

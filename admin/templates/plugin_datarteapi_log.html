@@ -1,0 +1,35 @@
+{% extends theme("base/base.html") %}
+{% import theme("base/wtf.html") as wtf %}
+
+{% block content %}
+{% include theme("client_menu.html") %}
+
+<script sourceURL=scrolltext.js>
+function scrollToBottom() {
+   logtext = document.getElementById("logfile")
+   logtext.scrollTop  =  logtext.scrollHeight;
+}
+
+function scrollToTop() {
+   document.getElementById("logfile").scrollTop = 0;
+}
+
+function reloadPage() {
+    location.reload(true) ;
+}
+</script>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h5>{% trans %}{{ logfile }}{% endtrans %}</h5></div>
+            <div class="panel-body">
+                <button onclick=scrollToBottom() type="button" class="btn btn-info" role="button">End of file</button>
+                <p></p>
+                <pre style="overflow: auto; max-height: 1000px" id="logfile">{{ contentLog }}</pre>
+                <button onclick=scrollToTop() type="button" class="btn btn-info" role="button">Begin of file</button>
+                <button onclick=reloadPage() type="button" class="btn btn-info" role="button">Reload</button>
+            </div>
+    </div>
+</div>
+                
+{% endblock %}

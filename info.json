@@ -1,0 +1,126 @@
+{
+    "json_version": 2,
+
+    "identity": {
+        "author": "Nicolas V.",
+        "author_email": "nico84dev at gmail.com",
+        "tags": ["Rte", "Tempo","Ecowatt","Electricité"],
+        "dependencies": [],
+        "description": "Domogik Plugin for data Rte API french electric provider like Tempo and Ecowatt signal",
+        "domogik_min_version": "0.5.2",
+        "name": "datarteapi",
+        "type": "plugin",
+        "version": "0.1"
+    },
+
+    "configuration": [{
+            "default": "digital.iservices.rte-france.com",
+            "description": "URL source for Rte data service.",
+            "key": "apidomaine",
+            "name": "http api end point",
+            "required": "yes",
+            "type": "string"
+        },{
+            "default": "/token/oauth",
+            "description": "URL source complement for Rte token service.",
+            "key": "apitokenendpoint",
+            "name": "http api token",
+            "required": "yes",
+            "type": "string"
+        }
+    ],
+
+    "device_types": {
+        "datarteapi.tempo": {
+            "description": "Signal donnant les caractéristiques des jours de type TEMPO.",
+            "id": "tempo",
+            "name": "Tempo Like Supply Contract",
+            "commands": [],
+            "sensors": [
+                        "ColorDay",
+                        "StartDate",
+                        "EndDate"
+                        ],
+            "parameters": [
+                {
+                    "key": "apitempoendpoint",
+                    "xpl": false,
+                    "description": "URL Tempo service endpoint",
+                    "type": "string"
+                },{
+                    "key": "idclient",
+                    "xpl": false,
+                    "description": "Rte id client",
+                    "type": "string"
+                },{
+                    "key": "idsecret",
+                    "xpl": false,
+                    "description": "Rte id secret",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+
+    "sensors": {
+        "CurrentColor": {
+            "name": "Current color",
+            "data_type": "DT_String",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 86400,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },  
+        "ColorDay": {
+            "name": "Color of day",
+            "data_type": "DT_String",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 86400,
+            "history": {
+                "store": true,
+                "duplicate": false,
+                "max": 15,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "StartDate": {
+            "name": "Start date",
+            "data_type": "DT_DateTime",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 86400,
+            "history": {
+                "store": true,
+                "duplicate": false,
+                "max": 15,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "EndDate": {
+            "name": "End date",
+            "data_type": "DT_DateTime",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 86400,
+            "history": {
+                "store": true,
+                "duplicate": false,
+                "max": 15,
+                "expire": 0,
+                "round_value": 0
+            }
+        }
+    },
+    "commands": {},
+    "xpl_stats": {},
+    "xpl_commands": {}
+}

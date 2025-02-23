@@ -1,0 +1,19 @@
+{% extends theme("base/base.html") %}
+{% import theme("base/wtf.html") as wtf %}
+
+{% block content %}
+{% include theme("client_menu.html") %}
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h5>{% trans %}Plugin log{% endtrans %}</h5></div>
+            <div class="panel-body">
+                <p>{{ logfile }}</p>
+                <pre>{{ errorlog }}</pre>
+                <a href="./{{ clientid }}/log" class="btn btn-info" role="button">{% trans %}Display log file{% endtrans %}</a>
+            </div>
+
+    </div>
+</div>
+
+{% endblock %}
